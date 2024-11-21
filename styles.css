@@ -1,0 +1,126 @@
+/* Configuração geral */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #fff;
+}
+
+/* Cabeçalho e rodapé */
+header, footer {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* Layout principal */
+main {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 0;
+}
+
+/* Campos de entrada */
+label {
+    margin-top: -0.8rem; /* Reduz o espaço entre o campo e o subtítulo acima */
+    display: block;
+    margin-bottom: 0.02rem;
+    font-weight: bold;
+    color: #000;
+}
+
+input {
+    margin-top: -1.3rem; /* Reduz o espaço entre o campo e o subtítulo acima */
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #696969;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    box-sizing: border-box;
+}
+
+/* Cada campo (label + input) ocupa uma coluna */
+fieldset {
+    display: grid; /* Define o fieldset como grid */
+    grid-template-columns: 1fr; /* Define uma única coluna */
+    padding: 0.2rem; /* Garante espaçamento interno */
+    margin-top: 0.2rem; /* Espaçamento acima do fieldset */
+    margin-bottom: 1rem; /* Adiciona margem inferior apenas entre os fieldsets */
+    box-sizing: border-box; /* Garante que largura e padding sejam contabilizados */
+}
+
+.grid-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 1.5rem; /* Espaço entre as colunas */
+}
+
+.column-1, .column-2 {
+    display: flex;
+    flex-direction: column; /* Campos empilhados na coluna */
+    gap: 1.5rem; /* Espaço entre os campos dentro da coluna */
+}
+
+/* Botão centralizado e ocupando as duas colunas */
+button {
+    width: 100%; /* Faz o botão ocupar 100% da largura da página */
+    grid-column: 1 / -1; /* O botão ocupa toda a largura da margem */
+    justify-self: center; /* Centraliza o botão no eixo horizontal */
+    padding: 0.8rem 1.5rem;
+    background-color: #23990B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+}
+
+button:hover {
+    background-color: ##32CD32;
+}
+
+/* Resultados ocupam as duas colunas */
+#results {
+    grid-column: span 2; /* Os resultados ocupam ambas as colunas */
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #E1FFE1;
+    border-radius: 10px;
+    border: 2px solid #008A3E;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+}
+
+/* Ajuste para telas pequenas */
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr; /* Coluna única em telas pequenas */
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #results {
+        grid-column: span 1; /* Resultados ocupam toda a largura */
+    }
+}
+
+legend {
+    width: calc(100% - 0.5rem); /* Faz a legenda ocupar quase toda a largura do fieldset */
+    text-align: center; /* Centraliza o texto */
+    font-weight: bold; /* Destaca o texto */
+    background-color: #23990B; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 0.8rem; /* Espaçamento interno */
+    margin: 0 auto 1rem; /* Centraliza a legenda dentro do fieldset */
+    margin-top: 2rem; /* Aumenta a margem superior */
+    box-sizing: border-box; /* Garante que o padding seja incluído no cálculo de largura */
+    display: block; /* Torna a legenda um bloco para controle total de largura */
+}

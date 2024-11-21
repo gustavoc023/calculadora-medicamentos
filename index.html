@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Medicamentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Medicamentos</h1>
+    </header>
+    <main>
+        <form id="medCalc">
+            <fieldset class="grid-columns">
+    		<legend>Dados do Paciente</legend>
+    
+    		<!-- Coluna 1 -->
+    		<div class="column-1">
+	                <label for="age">Idade do paciente (anos):</label>
+        	        <input type="number" id="age" name="age" placeholder="Ex: 55" required>
+		</div>
+		
+    		<!-- Coluna 2 -->
+  		<div class="column-2">
+	                <label for="weight">Peso do paciente (kg):</label>
+        	        <input type="number" id="weight" name="weight" placeholder="Ex: 70" required>
+		</div>
+            </fieldset>
+
+            <fieldset class="grid-columns">
+    		<legend>Dados da Medicação</legend>
+    
+    		<!-- Coluna 1 -->
+    		<div class="column-1">
+	               	<label for="medication">Medicação:</label>
+                	<input type="text" id="medication" name="medication" placeholder="Nome da medicação" required>
+
+	                <label for="presentation">Apresentação (mg/mL):</label>
+        	        <input type="number" id="presentation" name="presentation" placeholder="Ex: 5" required>
+
+	                <label for="volume">Volume do frasco/ampola (mL):</label>
+        	        <input type="number" id="volume" name="volume" placeholder="Ex: 10" required>
+
+	                <label for="ampoules">Total de ampolas (opcional):</label>
+        	        <input type="number" id="ampoules" name="ampoules" step="0.5" placeholder="Ex: 1.5">
+		</div>
+		
+    		<!-- Coluna 2 -->
+  		<div class="column-2">
+	                <label for="diluent">Diluente (mL):</label>
+        	        <input type="number" id="diluent" name="diluent" placeholder="Ex: 20" required>
+
+	                <label for="rateMgKgH">Taxa de infusão esperada (mg/kg/h - opcional):</label>
+        	        <input type="number" id="rateMgKgH" name="rateMgKgH" placeholder="Ex: 1.5">
+
+	                <label for="rateMgH">Taxa de infusão esperada (mg/h - opcional):</label>
+        	        <input type="number" id="rateMgH" name="rateMgH" placeholder="Ex: 10">
+
+	                <label for="rateMcgKgMin">Taxa de infusão esperada (mcg/kg/min - opcional):</label>
+        	        <input type="number" id="rateMcgKgMin" name="rateMcgKgMin" placeholder="Ex: 2">
+		</div>    		
+            </fieldset>
+
+        </form>  
+        <div id="results">
+            <button type="button" onclick="calculate()">Calcular</button>
+            <!-- Resultados aparecerão aqui -->
+        </div>
+    </main>
+    <footer>
+        <p>Desenvolvido por Gustavo Carvalho</p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
