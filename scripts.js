@@ -7,7 +7,7 @@ function calculate() {
     const rateMgKgH = parseFloat(document.getElementById('rateMgKgH').value || 0);
     const rateMgH = parseFloat(document.getElementById('rateMgH').value || 0);
     const rateMcgKgMin = parseFloat(document.getElementById('rateMcgKgMin').value || 0);
-    const rateMgMin = parseFloat(document.getElementById('rateMgMin').value || 0); // Novo campo
+    const rateMgMin = parseFloat(document.getElementById('rateMgMin').value || 0);
 
     // Cálculos
     const medicationAmount = presentation * volume * ampoules;
@@ -25,13 +25,12 @@ function calculate() {
         ? (rateMgH * solutionVolume) / medicationAmount 
         : 0;
 
-    // Conversão de mg/min para mL/h
     const infusionBicmgMinToMlH = rateMgMin > 0 
         ? (rateMgMin * 60) / solutionConcentration 
         : 0;
 
-    // Exibindo resultados
-    const results = `
+    // Exibindo resultados sem sobrescrever o botão
+    const resultsHTML = `
         <h2>Resultados</h2>
         <p>Quantidade de medicação (mg): ${medicationAmount.toFixed(2)}</p>
         <p>Concentração da solução (mg/mL): ${solutionConcentration.toFixed(2)}</p>
@@ -40,7 +39,21 @@ function calculate() {
         <p>Conversão mcg/kg/min para mg/kg/h: ${mcgKgMinToMgKgH.toFixed(2)}</p>
         <p>Infusão em BIC (mL/h - taxa mg/kg/h): ${infusionBicMlHRateMgKgH.toFixed(2)}</p>
         <p>Infusão em BIC (mL/h - taxa mg/h): ${infusionBicMlHRateMgH.toFixed(2)}</p>
-        <p>Infusão em BIC (mL/h - taxa mg/min): ${mgMinToMlH.toFixed(2)}</p> <!-- Novo resultado -->
+        <p>Infusão em BIC (mL/h - taxa mg/min): ${infusionBicmgMinToMlH.toFixed(2)}</p>
     `;
-    document.getElementById('results').innerHTML = results;
+
+    // Atualizar apenas os resultados sem sobrescrever os botões
+    const resultsDiv = document.getElementById('results');
+    const existingButtons = resultsDiv.querySelectorAll('button');
+    resultsDiv.innerHTML = resultsHTML;
+
+    // Reanexar os botões ao final
+    existingButtons.forEach(button => resultsDiv.appendChild(button));
+
+    // Tornar o botão "Recalcular" visível
+    document.getElementById('recalculate-btn').style.display = "inline-block";
+}
+
+function recalculate() {
+    calculate(); // Recalcula os resultados com os dados já inseridos
 }
